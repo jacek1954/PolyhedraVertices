@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import matplotlib.pyplot as plt
-import numpy as np
 
 plt.axis([0, 1, 0, 1], 'scaled')
 crd = open('danetest', 'r')

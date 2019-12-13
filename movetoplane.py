@@ -1,7 +1,7 @@
 import math
 
 
-def valuelinfun(mat, vec):
+def ValueLinFun(mat, vec):
     ret = []
     for i in range(len(vec)):
         coord = 0
@@ -11,14 +11,14 @@ def valuelinfun(mat, vec):
     return ret
 
 
-def rotaroundaxis(p, ax, sn, cs):
+def RotAroundAxis(p, ax, sn, cs):
     if ax == 'x':
         m = [[1, 0, 0], [0, cs, -sn], [0, sn, cs]]
     elif ax == 'y':
         m = [[cs, 0, sn], [0, 1, 0], [-sn, 0, cs]]
     elif ax == 'z':
         m = [[cs, -sn, 0], [sn, cs, 0], [0, 0, 1]]
-    ret = valuelinfun(m, p)
+    ret = ValueLinFun(m, p)
     return ret
 
 
@@ -27,7 +27,7 @@ def translate(p, vect):
     return q
 
 
-def movetoxyplane(pointset):
+def MoveToXYPlane(pointset):
     # pointset jest układem punktów w przestrzeni (co najmniej trzy punkty)
     # funkcja przeprowadza ten układ na płaszzyznę xy
     # pierwszy punkt układu otrzymuje współrzędne (0, 0)
@@ -43,7 +43,7 @@ def movetoxyplane(pointset):
     sn = s/r
     cs = c/r
     for i in range(len(pointset) - 1):
-        pointset[i+1] = rotaroundaxis(pointset[i+1], 'x', sn, cs)
+        pointset[i+1] = RotAroundAxis(pointset[i+1], 'x', sn, cs)
     v = pointset[1]
     s = v[2]
     c = v[0]
@@ -51,7 +51,7 @@ def movetoxyplane(pointset):
     sn = s/r
     cs = c/r
     for i in range(len(pointset) - 1):
-        pointset[i+1] = rotaroundaxis(pointset[i+1], 'y', sn, cs)
+        pointset[i+1] = RotAroundAxis(pointset[i+1], 'y', sn, cs)
     v = pointset[2]
     s = -v[2]
     c = v[1]
@@ -59,7 +59,7 @@ def movetoxyplane(pointset):
     sn = s/r
     cs = c/r
     for i in range(len(pointset) - 2):
-        pointset[i+2] = rotaroundaxis(pointset[i+2], 'x', sn, cs)
+        pointset[i+2] = RotAroundAxis(pointset[i+2], 'x', sn, cs)
     return [pointset]
 
 
@@ -74,7 +74,7 @@ while 0:
     r = math.sqrt(s ** 2 + c ** 2)
     sn = s / r
     cs = c / r
-    p = rotaroundaxis(p, 'x', sn, cs)
+    p = RotAroundAxis(p, 'x', sn, cs)
     print(p)
 
     # obrót wokół y tak, aby punkt znalazł się na xy (y' = y, z = 0)
@@ -84,7 +84,7 @@ while 0:
     r = math.sqrt(s ** 2 + c ** 2)
     sn = s / r
     cs = c / r
-    p = rotaroundaxis(p, 'y', sn, cs)
+    p = RotAroundAxis(p, 'y', sn, cs)
     print(p)
 
     # obrót wokół x tak, aby punkt znalazł się na xy (x' = x, z = 0)
@@ -94,9 +94,9 @@ while 0:
     r = math.sqrt(s ** 2 + c ** 2)
     sn = s / r
     cs = c / r
-    p = rotaroundaxis(p, 'x', sn, cs)
+    p = RotAroundAxis(p, 'x', sn, cs)
     print(p)
 
     print(u)
-    w = movetoxyplane(u)
+    w = MoveToXYPlane(u)
     print(w)

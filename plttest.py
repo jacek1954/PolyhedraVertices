@@ -16,7 +16,10 @@ def readstr(f, patt):
     while ps >= 0:
         st = st + sg
         sg = f.read(1)
-        ps = patt.find(sg)
+        if sg == '':
+            ps = -1
+        else:
+            ps = patt.find(sg)
     return st
 
 # rysuje odcinek o danych końcach
@@ -52,13 +55,15 @@ y2 = y0
 n = drawline([x1, y1], [x2, y2])
 
 # rysowanie mapy cięć
-s =  readstr(crd, sig)
+s = readstr(crd, sig)
 while s != '':
     x1 = float(s)
     y1 = float(readstr(crd, sig))
     x2 = float(readstr(crd, sig))
     y2 = float(readstr(crd, sig))
     n = drawline([x1, y1], [x2, y2])
-    s =  readstr(crd, sig)
+    print('s', s)
+    s = readstr(crd, sig)
+print('out')
 crd.close()
 plt.show()

@@ -32,10 +32,14 @@ def MoveToXYPlane(pointset):
     # funkcja przeprowadza ten układ na płaszzyznę xy
     # pierwszy punkt układu otrzymuje współrzędne (0, 0)
     # drugi punkt trafia na oś x
+    # for i in range(len(pointset)):
+    #     print('pointset[', i, '] = ', pointset[i])
     trvect = pointset[0]
     for i in range(1, len(pointset)):
         pointset[i] = translate(pointset[i], trvect)
     pointset[0] = [0, 0, 0]
+    # for i in range(len(pointset)):
+    #     print('pointset[', i, '] = ', pointset[i])
     v = pointset[1]
     s = v[1]
     c = v[2]
@@ -63,40 +67,39 @@ def MoveToXYPlane(pointset):
     return [pointset]
 
 
-while 0:
-    u = [[1, 2, 3], [3, 6, 0], [-2, 3, 1]]
-
-    p = [2, 4, -3]
-    # obrót wokół x tak, aby punkt znalazł się na xz (x' = x, y = 0)
-    v = p
-    s = v[1]
-    c = v[2]
-    r = math.sqrt(s ** 2 + c ** 2)
-    sn = s / r
-    cs = c / r
-    p = RotAroundAxis(p, 'x', sn, cs)
-    print(p)
-
-    # obrót wokół y tak, aby punkt znalazł się na xy (y' = y, z = 0)
-    v = p
-    s = v[2]
-    c = v[0]
-    r = math.sqrt(s ** 2 + c ** 2)
-    sn = s / r
-    cs = c / r
-    p = RotAroundAxis(p, 'y', sn, cs)
-    print(p)
-
-    # obrót wokół x tak, aby punkt znalazł się na xy (x' = x, z = 0)
-    v = p
-    s = -v[2]
-    c = v[1]
-    r = math.sqrt(s ** 2 + c ** 2)
-    sn = s / r
-    cs = c / r
-    p = RotAroundAxis(p, 'x', sn, cs)
-    print(p)
-
-    print(u)
-    w = MoveToXYPlane(u)
-    print(w)
+# u = [[1, 2, 3], [3, 6, 0], [-2, 3, 1]]
+#
+# p = [2, 4, -3]
+# # obrót wokół x tak, aby punkt znalazł się na xz (x' = x, y = 0)
+# v = p
+# s = v[1]
+# c = v[2]
+# r = math.sqrt(s ** 2 + c ** 2)
+# sn = s / r
+# cs = c / r
+# p = RotAroundAxis(p, 'x', sn, cs)
+# print(p)
+#
+# # obrót wokół y tak, aby punkt znalazł się na xy (y' = y, z = 0)
+# v = p
+# s = v[2]
+# c = v[0]
+# r = math.sqrt(s ** 2 + c ** 2)
+# sn = s / r
+# cs = c / r
+# p = RotAroundAxis(p, 'y', sn, cs)
+# print(p)
+#
+# # obrót wokół x tak, aby punkt znalazł się na xy (x' = x, z = 0)
+# v = p
+# s = -v[2]
+# c = v[1]
+# r = math.sqrt(s ** 2 + c ** 2)
+# sn = s / r
+# cs = c / r
+# p = RotAroundAxis(p, 'x', sn, cs)
+# print(p)
+#
+# # print(u)
+# w = MoveToXYPlane(u)
+# print(w)
